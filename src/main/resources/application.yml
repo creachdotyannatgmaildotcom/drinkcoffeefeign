@@ -1,8 +1,11 @@
 spring:
   application:
     name: drinkcoffeefeign
-server:
-  port: 8089
+  config:
+    import: 'configserver:'
+  cloud:
+    config:
+      uri: 'http://localhost:8071'
   
 management:
   endpoints:
@@ -15,7 +18,9 @@ management:
   endpoint:
     shutdown:
       access: unrestricted
-
+    health:
+      probes:
+        enabled: true
 
 eureka:
   instance:
